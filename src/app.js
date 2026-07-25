@@ -2,15 +2,15 @@ const express=require("express")
 
 const app=express();
 
-app.use("/test",(req,res)=>{
+app.get("/test",(req,res)=>{
     res.send("Hello from test..");
 });
 
-app.use("/about",(req,res)=>{
+app.post("/test",(req,res)=>{
     res.send("Hello from about..");
 });
 
-app.use("/",(req,res)=>{
+app.delete("/test",(req,res)=>{
     res.send("Hello from server..");
 });
 
