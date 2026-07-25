@@ -2,7 +2,8 @@ const express=require("express")
 
 const app=express();
 
-app.get("/test",(req,res)=>{
+app.get("/test/:userId/:Name/:department",(req,res)=>{
+    console.log(req.params);
     res.send("Hello from test..");
 });
 
