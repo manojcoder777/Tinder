@@ -2,9 +2,13 @@ const express=require("express")
 
 const app=express();
 
-app.get("/test/:userId/:Name/:department",(req,res)=>{
+app.get("/test/:userId/:Name/:department",(req,res,next)=>{
+    next();
     console.log(req.params);
-    res.send("Hello from test..");
+    
+    },(req,res)=>{
+        console.log("Manoj");
+        res.send("Hello Manoj")
 });
 
 app.post("/test",(req,res)=>{
