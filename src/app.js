@@ -2,6 +2,19 @@ const express=require("express")
 
 const app=express();
 
+const {adminAuth,testAuth} = require("./middlewares/auth");
+
+app.use("/admin",adminAuth);
+app.use("/test",testAuth);
+
+app.get("/admin/getUserData",(req,res)=>{
+  res.send("data is sent");
+});
+
+app.get("/admin/deleteData",(req,res)=>{
+  res.send("data is deleted");
+});
+
 app.get("/test/:userId/:Name/:department",(req,res,next)=>{
     next();
     console.log(req.params);
@@ -11,11 +24,11 @@ app.get("/test/:userId/:Name/:department",(req,res,next)=>{
         res.send("Hello Manoj")
 });
 
-app.post("/test",(req,res)=>{
+app.post("/test/about",(req,res)=>{
     res.send("Hello from about..");
 });
 
-app.delete("/test",(req,res)=>{
+app.delete("/test/server",(req,res)=>{
     res.send("Hello from server..");
 });
 
