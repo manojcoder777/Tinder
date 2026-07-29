@@ -25,7 +25,12 @@ app.get("/test/:userId/:Name/:department",(req,res,next)=>{
 });
 
 app.post("/test/about",(req,res)=>{
+    try{
+    throw new error("error from hello from about");
     res.send("Hello from about..");
+    }catch(err){
+        res.send("Something Occured Wrong When Calling The About Page");
+    }
 });
 
 app.delete("/test/server",(req,res)=>{
