@@ -9,6 +9,59 @@ app.post("/signup", async (req,res)=>{
     await user.save();
     res.send("User added successfully");
 });
+app.get("/user",async(req,res)=>{
+   const userEmail=req.body.emailId;
+   try{
+    await User.find({emailId:userEmail});
+    res.send("Succesfully fetched");
+   }catch(err){
+    res.status(404).send("something went wrong");
+   }
+});
+app.get("/feed",async(req,res)=>{
+   try{
+    const users=await User.find({});
+    console.log(users)
+    res.send("Succesfully feed is fetched");
+   }catch(err){
+    res.status(404).send("something went wrong");
+   }
+});
+app.get("/find",async(req,res)=>{
+  try {
+    const userEmail=req.body.emailId;
+    console.log(userEmail);
+    const user=await User.findOne({emailId:userEmail});
+    if(user!==null){
+      console.log(user)
+     res.send(user);
+    }else{
+      res.send("user not found")
+    }
+  }catch(err){
+    res.status(404).send("something went wrong");
+  }
+});
+app.delete("/user",async(req,res)=>{
+   const userId=req.body.userId;
+   try{
+    await User.findByIdAndDelete(userId);
+    res.send("Succesfully Deleted");
+   }catch(err){
+    res.status(404).send("something went wrong");
+   }
+});
+app.patch("/user",async(req,res)=>{
+   const userEmailId=req.body.emailId;
+   const data=req.body;
+   try{
+    const user=await User.findOneAndUpdate({emailId:userEmailId},data,{returnDocument:"before"});
+    console.log(user);
+    res.send("Succesfully Updated");
+   }catch(err){
+    res.status(404).send("something went wrong");
+   };
+});
 connectDB()
   .then(()=>{
     console.log("Connected to the database");
