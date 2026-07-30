@@ -1,40 +1,26 @@
 const express=require("express")
-
+const connectDB = require("./config/database")
 const app=express();
+const User=require("./models/user")
 
-const {adminAuth,testAuth} = require("./middlewares/auth");
-
-app.use("/admin",adminAuth);
-app.use("/test",testAuth);
-
-app.get("/admin/getUserData",(req,res)=>{
-  res.send("data is sent");
+app.post("/signup", async (req,res)=>{
+    const user=new User({
+        firstName:"Manoj",
+        lastName:"S",
+        emailId:"manoj2410558@ssn.edu.in",
+        password:"UtQ49FSE"
+    });
+    await user.save();
+    res.send("User added successfully");
 });
-
-app.get("/admin/deleteData",(req,res)=>{
-  res.send("data is deleted");
+connectDB()
+  .then(()=>{
+    console.log("Connected to the database");
+    app.listen(3000,()=>{
+    console.log("server is listening successfully on port 3000");
 });
+  })
+  .catch((err) => {
+    console.log("Cannot connect to the database");
+  });
 
-app.get("/test/:userId/:Name/:department",(req,res,next)=>{
-    next();
-    console.log(req.params);
-    
-    },(req,res)=>{
-        console.log("Manoj");
-        res.send("Hello Manoj")
-});
-
-app.post("/test/about",(req,res)=>{
-    try{
-    throw new error("error from hello from about");
-    res.send("Hello from about..");
-    }catch(err){
-        res.send("Something Occured Wrong When Calling The About Page");
-    }
-});
-
-app.delete("/test/server",(req,res)=>{
-    res.send("Hello from server..");
-});
-
-app.listen(3000);
