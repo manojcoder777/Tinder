@@ -55,11 +55,11 @@ app.patch("/user",async(req,res)=>{
    const userEmailId=req.body.emailId;
    const data=req.body;
    try{
-    const user=await User.findOneAndUpdate({emailId:userEmailId},data,{returnDocument:"before"});
+    const user=await User.findOneAndUpdate({emailId:userEmailId},data,{returnDocument:"before",runValidators:true});
     console.log(user);
     res.send("Succesfully Updated");
    }catch(err){
-    res.status(404).send("something went wrong");
+    res.status(404).send("Update error"+err.message);
    };
 });
 connectDB()
