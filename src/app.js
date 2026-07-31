@@ -57,7 +57,7 @@ app.patch("/user",async(req,res)=>{
   
    try{
     const ALLOWED_UPDATES=["photoUrl","about","gender","age","skills"];
-    const isUpdateAllowed=Object.keys(data).every(key)((k)=>
+    const isUpdateAllowed=Object.keys(data).every((k)=>
     ALLOWED_UPDATES.includes(k)
      );
     if(!isUpdateAllowed){
