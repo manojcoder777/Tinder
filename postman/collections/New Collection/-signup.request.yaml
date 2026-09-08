@@ -1,0 +1,18 @@
+$kind: http-request
+name: /signup
+url: http://localhost:3000/signup
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"firstName\":\"Vijaya Lakshmi\",\r
+
+    \    \"lastName\":\"SudalaiMani\",\r
+
+    \    \"emailId\":\"manojsudalaimani@gmail.com\",\r
+
+    \    \"password\":\"Vijayalakshmi@1975\"\r
+
+    }"
+order: 1787673329230
