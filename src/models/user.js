@@ -83,8 +83,9 @@ userSchema.methods.validatePassword=async function(passwordInputByUser){
 
 
 // const User=mongoosee.model("User",userSchema); and pass(we can create new instances for this(like object for user))
-module.exports=mongoose.model("User",userSchema);
-
+const User=mongoose.model("User",userSchema);
+ 
+module.exports=User;
 
 
 
