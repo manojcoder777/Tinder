@@ -1,0 +1,16 @@
+$kind: http-request
+name: /profile/edit
+description: ""
+url: http://localhost:3000/profile/edit
+method: PATCH
+body:
+  type: json
+  content: |-
+    {
+      "age": 50,
+      "gender": "female",
+      "photoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvNHUqOVCrXdppGt6d_MBygJcGXUv2tCzSPuAsOvuR1A&s=10",
+      "about": "im manoj mom",
+      "skills": ["cooking", "cleaning"]
+    }   
+order: 4452118429872559

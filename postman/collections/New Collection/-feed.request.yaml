@@ -1,0 +1,6 @@
+$kind: http-request
+name: /feed
+description: ""
+url: http://localhost:3000/feed
+method: GET
+order: 4436589556164838

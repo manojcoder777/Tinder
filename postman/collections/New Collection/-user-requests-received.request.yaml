@@ -1,0 +1,6 @@
+$kind: http-request
+name: /user/requests/received
+description: ""
+url: http://localhost:3000/user/requests/received
+method: GET
+order: 4501451398373662
