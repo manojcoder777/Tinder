@@ -1,0 +1,9 @@
+$kind: http-request
+name: /request/send/:status/:fromUserId
+description: ""
+url: http://localhost:3000/request/send/interested/6ab38b9b7b328416ed5b0c91
+method: POST
+body:
+  type: json
+  content: ""
+order: 4501524732244058
